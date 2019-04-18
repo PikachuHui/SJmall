@@ -110,7 +110,7 @@ export default {
   font-size: 1rem;
 }
 .nickname {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
   color: #333;
   font-size: 1.1rem;
   font-weight: bold;
