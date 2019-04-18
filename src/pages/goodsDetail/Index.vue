@@ -32,7 +32,7 @@
         </group-box>
       </container-box>
     </div>
-    <settlement-bar :showPrice="false">
+    <settlement-bar :showPrice="false" :showTotal="showTotal">
       <default-button text="加入购物车" class="add-to-shopcart" @click="addToShopcartAction"></default-button>
       <default-button text="去购物车" class="go-to-shopcart" @click="$router.push({name: 'Shopcart'})"></default-button>
     </settlement-bar>
@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import { Storage } from "../../common/js/localStorage";
 import GoBack from "../../components/common/GoBack";
 import DropdownMenu from "../../components/common/DropdownMenu";
 import DropdownList from "../../components/common/DropdownList";
@@ -67,6 +68,7 @@ export default {
   },
   data() {
     return {
+      showTotal: true,
       showDropdownList: false,
       hideMoreStandard: true,
       total: 1,
@@ -81,7 +83,6 @@ export default {
       }
     };
   },
-  computed: {},
   methods: {
     openDropdownList(params) {
       this.showDropdownList = params.isShowDropdownList;
@@ -90,6 +91,9 @@ export default {
       this.total = params.newvalue;
     },
     addToShopcartAction() {
+      if (!this.$global.isLogin()) {
+        this.$router.push({ name: "Login" });
+      }
       let goods = {
         id: this.goods.id,
         price: this.goods.price,
@@ -112,6 +116,10 @@ export default {
   mounted() {
     // 清空购物车store中的数据
     this.$store.commit("emptyShopcart");
+    // 检查是否登入
+    if (!this.$global.isLogin()) {
+      this.showTotal = false;
+    }
     // 获取商品信息
     this.axios
       .get(`${this.$global.SERVER_IP}/getGoodsItem/${this.$route.params.id}`)

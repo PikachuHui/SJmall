@@ -68,6 +68,9 @@ export default {
     }
   },
   mounted() {
+    if (!this.$global.isLogin()) {
+      this.$router.push({ name: "Login" });
+    }
     this.axios
       .get(
         `${this.$global.SERVER_IP}/userInformation/${
