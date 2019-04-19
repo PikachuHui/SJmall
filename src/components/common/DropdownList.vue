@@ -2,14 +2,25 @@
   <div class="dropdown-container">
     <div class="menu-arrow"></div>
     <div class="item-container">
-      <div
-        v-for="(item, index) in menuList"
-        :key="index"
-        class="list-item"
-        @click="$router.push({name: item.routeName})"
-      >
-        <div class="item-icon" :style="{backgroundImage: `url('${item.icon}')`}"></div>
-        <div>{{item.title}}</div>
+      <div class="list-item" @click="$router.push({name: 'Index'})">
+        <div class="item-icon icon-index"></div>
+        <div>首页</div>
+      </div>
+      <div class="list-item" @click="$router.push({name: 'Classify'})">
+        <div class="item-icon icon-classify"></div>
+        <div>分类</div>
+      </div>
+      <div class="list-item" @click="$router.push({name: 'Shopcart'})">
+        <div class="item-icon icon-shopcart"></div>
+        <div>购物车</div>
+      </div>
+      <div class="list-item" @click="$router.push({name: 'My'})">
+        <div class="item-icon icon-my"></div>
+        <div>我的蔬加</div>
+      </div>
+      <div class="list-item" @click="$router.push({name: ''})">
+        <div class="item-icon icon-browse-record"></div>
+        <div>浏览足迹</div>
       </div>
     </div>
   </div>
@@ -17,38 +28,7 @@
 
 <script>
 export default {
-  name: "DropdownList",
-  data() {
-    return {
-      menuList: [
-        {
-          title: "首页",
-          icon: "../../../static/icon/menu-home.png",
-          routeName: "Index"
-        },
-        {
-          title: "分类",
-          icon: "../../../static/icon/menu-classify.png",
-          routeName: "Classify"
-        },
-        {
-          title: "购物车",
-          icon: "../../../static/icon/menu-shopcart.png",
-          routeName: "Shopcart"
-        },
-        {
-          title: "我的蔬加",
-          icon: "../../../static/icon/menu-my.png",
-          routeName: "My"
-        },
-        {
-          title: "浏览足迹",
-          icon: "../../../static/icon/menu-browse-record.png",
-          routeName: ""
-        }
-      ]
-    };
-  }
+  name: "DropdownList"
 };
 </script>
 
@@ -92,5 +72,20 @@ export default {
   height: 1.2rem;
   background-position: center;
   background-size: cover;
+}
+.icon-index {
+  background-image: url("../../../static/icon/menu-home.png");
+}
+.icon-classify {
+  background-image: url("../../../static/icon/menu-classify.png");
+}
+.icon-shopcart {
+  background-image: url("../../../static/icon/menu-shopcart.png");
+}
+.icon-my {
+  background-image: url("../../../static/icon/menu-my.png");
+}
+.icon-browse-record {
+  background-image: url("../../../static/icon/menu-browse-record.png");
 }
 </style>
