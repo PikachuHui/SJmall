@@ -1,6 +1,7 @@
-# sjmall
+# SJmall
 
 > 蔬加电子商城
+> [项目演示地址](https://pikachuhui.github.io/SJmall)
 
 ## Build Setup
 
