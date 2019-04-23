@@ -2,8 +2,8 @@
     <div class="container"
         :class="{columnDirection: isColumnDirection}"
         @click="$router.push({
-            name: 'GoodsDetail',
-            params: {id: goods.goodsId}
+            path: `/goods-detail/${goods.id}`,
+            params: {id: goods.id}
     })">
         <img class="goods-image" :src="goods.image">
         <div class="information">
